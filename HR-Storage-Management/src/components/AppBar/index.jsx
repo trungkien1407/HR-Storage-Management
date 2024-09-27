@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import React from 'react'
 import SvgIcon from '@mui/material/SvgIcon'
 import TextField from '@mui/material/TextField'
@@ -10,13 +11,17 @@ import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Fade from '@mui/material/Fade'
+import InputAdornment from '@mui/material/InputAdornment'
+import SearchIcon from '@mui/icons-material/Search'
+import CloseIcon from '@mui/icons-material/Close'
 import { Box } from '@mui/material'
 
 
 
 function AppBar() {
+    const [searchValue, setSearchValue] = useState()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl)
     const handleClick = (event) => {
@@ -35,14 +40,16 @@ function AppBar() {
   }
   return (
     <Box sx={{
-        backgroundColor: 'gray',
+        backgroundColor: '#FFFFFF',
         width: '100%',
         height: (theme) => theme.hrCustom.appBarHeight,
         display: 'flex',
         alignItems:'center',
-        justifyContent: 'space-between'
-
-    }}>
+        justifyContent: 'space-between',
+        paddingX: '32px',
+        boxShadow: 1,
+    }}
+    >
         <Box>
             <SvgIcon>
                 <svg
@@ -62,7 +69,30 @@ function AppBar() {
             alignItems: 'center',
             gap: 2
         }}>
-            <TextField id="outlined-search" label="Tìm kiếm hoặc gõ lệnh (CRLT + G)" type="search" size='small' />
+            <TextField 
+            id="outlined-search" 
+            label="Tìm kiếm hoặc gõ lệnh (CRLT + G)" 
+            type="search" 
+            size='small' 
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon sx={{ color: 'gray' }} />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CloseIcon sx={{
+                    color: searchValue ? 'black' : 'transparent',
+                    fontSize: 'small',
+                    cursor: 'pointer'
+                  }}
+                  onClick = {() => setSearchValue('')} // Khi click vào thì nó sẽ chuyển về giá trị rỗng
+                  />
+                </InputAdornment>
+              )
+            }}
+            />
             <Tooltip title="Thông báo">
                 <Badge color="secondary">
                     <NotificationsNoneIcon sx={{cursor:'pointer'}} />
@@ -92,6 +122,7 @@ function AppBar() {
                     onClick={handleClickMenu}
                 >
                     Trợ giúp
+                  <ExpandMoreIcon />
                 </Button>
                 <Menu
                     id="fade-menu"
