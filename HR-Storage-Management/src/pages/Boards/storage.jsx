@@ -1,3 +1,4 @@
+import React from 'react'
 import {Container} from '@mui/material'
 import AppBar from '~/components/AppBar'
 import BoardBar from '~/components/BoardBar'
@@ -27,6 +28,8 @@ import HandymanIcon from '@mui/icons-material/Handyman'
 import InventoryIcon from '@mui/icons-material/Inventory'
 import RequestPageIcon from '@mui/icons-material/RequestPage'
 import HomeIcon from '@mui/icons-material/Home'
+import Stack from '@mui/material/Stack'
+import { BarChart } from '@mui/x-charts/BarChart'
 import {Box} from '@mui/material'
 
 
@@ -42,8 +45,7 @@ function Board() {
         <Box sx={{
           display: 'flex',
           maxHeight:'100vh',
-          paddingX: '32px',
-          justifyContent:'space-between',
+          paddingX: '64px',
           marginTop:'12px'
         }}>
           <Box sx={{
@@ -52,7 +54,9 @@ function Board() {
             fontWeight:'400',
             fontSize: '12px',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            overflowX:'hidden',
+            overflowY:'auto'
           }}>
               
               <List
@@ -215,10 +219,24 @@ function Board() {
           </Box>
           <Box sx={{
             maxWidth:'750px',
-            maxHeight:'100vh',
-            background: 'gray'
+            maxHeight:'100vh'
           }}>
-              Content
+              <BarChart
+                    xAxis={[
+                      {
+                        id: 'barCategories',
+                        data: ['Cửa hàng - MO', 'Hàng chuyển đi - MO'],
+                        scaleType: 'band',
+                      },
+                    ]}
+                    series={[
+                      {
+                        data: [2, 0],
+                      },
+                    ]}
+                    width={1000}
+                    height={400}
+                  />
           </Box>
         </Box>
        
