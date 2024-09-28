@@ -46,7 +46,7 @@ function AppBar() {
         display: 'flex',
         alignItems:'center',
         justifyContent: 'space-between',
-        paddingX: '32px',
+        paddingX: '64px',
         boxShadow: 1,
     }}
     >

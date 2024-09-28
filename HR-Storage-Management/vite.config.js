@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(), 
     svgr({
-      svgrOptions: { exportType: 'named', ref: true, svgo: false, titleProp: true },
+      svgrOptions: { exportType: 'named', ref: true, svgo: true, titleProp: true },
       include: '**/*.svg',
     })
   ],
