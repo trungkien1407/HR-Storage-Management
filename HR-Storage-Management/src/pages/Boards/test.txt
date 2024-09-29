@@ -1,0 +1,253 @@
+import React, { useState } from 'react';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+const Dashboard = () => {
+  const [chartData, setChartData] = useState({
+    labels: ['Cửa hàng - MO', 'Hàng chuyển đi - MO'],
+    datasets: [
+      {
+        label: 'Giá trị kho',
+        data: [1.5, 0.8], // Thay thế bằng dữ liệu thực tế
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  });
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: false,
+      },
+    },
+  };
+
+  return (
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      <div className="w-64 bg-white shadow-md">
+        <div className="p-4 text-lg font-bold text-gray-800">Kho</div>
+        <ul className="mt-4">
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-home mr-2"></i> Trang Chủ
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-calculator mr-2"></i> Kế toán
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-wallet mr-2"></i> Tài sản
+          </li>
+          {/* ... other sidebar items ... */}
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-tools mr-2"></i> Build
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-shopping-cart mr-2"></i> Mua hàng
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-users mr-2"></i> CRM
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-money-bill-alt mr-2"></i> Khoản Vay
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-file-alt mr-2"></i> Bảng Lương
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-chart-pie mr-2"></i> Dự án
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-comment-dots mr-2"></i> Chat luồng
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-shopping-bag mr-2"></i> Bán hàng
+          </li>
+          <li className="px-4 py-2 bg-gray-200 text-gray-800 cursor-pointer">
+            <i className="fas fa-warehouse mr-2"></i> Kho
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-question-circle mr-2"></i> Hỗ trợ
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-globe mr-2"></i> Website
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-cog mr-2"></i> Cài Đặt
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-th-large mr-2"></i> Tiện ích
+          </li>
+        </ul>
+        <div className="mt-4 px-4 text-gray-600">TÊN MIỀN</div>
+        <ul className="mt-2">
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-industry mr-2"></i> Sản xuất
+          </li>
+        </ul>
+        <div className="mt-4 px-4 text-gray-600">QUẢN TRỊ</div>
+        <ul className="mt-2">
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-pencil-alt mr-2"></i> Tùy biến
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-link mr-2"></i> Tích hợp
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-cogs mr-2"></i> Công cụ
+          </li>
+          <li className="px-4 py-2 text-gray-600 hover:bg-gray-200 cursor-pointer">
+            <i className="fas fa-user mr-2"></i> Người sử dụng
+          </li>
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 p-6">
+        <div className="flex justify-between items-center">
+          <input
+            type="text"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Tìm Kiếm Hoặc Gõ Lệnh (Ctrl + G)"
+          />
+          <div className="flex items-center">
+            <button className="bg-white rounded-md px-4 py-2 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Trợ Giúp <i className="fas fa-caret-down ml-2"></i>
+            </button>
+            <span className="bg-blue-500 text-white rounded-full px-2 ml-4">2</span>
+            <button className="ml-4 text-gray-600 hover:text-gray-800">
+              <i className="fas fa-ellipsis-h"></i> Tùy Chỉnh
+            </button>
+          </div>
+        </div>
+
+        {/* Warehouse wise Stock Value */}
+        <div className="mt-6 bg-white rounded-md shadow-md p-6">
+          <h2 className="text-lg font-bold text-gray-800">Warehouse wise Stock Value</h2>
+          <p className="text-gray-600">Đã đồng bộ hóa lần cuối vừa mới đây</p>
+          <div className="mt-4">
+            <Bar data={chartData} options={options} />
+          </div>
+        </div>
+
+        {/* Quick Access */}
+        <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Sản phẩm</h3>
+            <span className="text-green-500">87 Available</span>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Yêu cầu nguyên liệu</h3>
+            <span className="text-yellow-500">4 Pending</span>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Chứng từ kho</h3>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Biên lai nhận hàng</h3>
+            <span className="text-blue-500">4 To Bill</span>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Phiếu giao hàng</h3>
+            <span className="text-red-500">1 To Bill</span>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Số cái hàng tồn kho</h3>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Số tồn kho</h3>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Bảng Thông Tin Tổng Hợp</h3>
+          </div>
+        </div>
+
+        {/* Masters & Reports */}
+        <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Hàng hóa và giá cả</h3>
+            <ul className="mt-2 text-gray-600">
+              <li className="mb-1">
+                <i className="fas fa-box mr-2"></i> Sản phẩm
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-layer-group mr-2"></i> Nhóm hàng
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-barcode mr-2"></i> Sản phẩm lô
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-table mr-2"></i> Bảng giá
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-tags mr-2"></i> Giá sản phẩm
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-exchange-alt mr-2"></i> Quy tắc giao hàng
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-money-bill-wave mr-2"></i> Quy định định giá
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-sync-alt mr-2"></i> Mục Thay thế
+              </li>
+            </ul>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Giao dịch hàng tồn kho</h3>
+            <ul className="mt-2 text-gray-600">
+              <li className="mb-1">
+                <i className="fas fa-clipboard-list mr-2"></i> Yêu cầu nguyên liệu
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-file-alt mr-2"></i> Chứng từ kho
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-truck mr-2"></i> Phiếu giao hàng
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-receipt mr-2"></i> Biên lai nhận hàng
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-list-ul mr-2"></i> Danh sách lựa chọn
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-map-marker-alt mr-2"></i> Giao hàng tận nơi
+              </li>
+            </ul>
+          </div>
+          <div className="bg-white rounded-md shadow-md p-4">
+            <h3 className="text-base font-bold text-gray-800">Báo cáo hàng tồn kho</h3>
+            <ul className="mt-2 text-gray-600">
+              <li className="mb-1">
+                <i className="fas fa-boxes mr-2"></i> Số cái hàng tồn kho
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-warehouse mr-2"></i> Số tồn kho
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-file-invoice mr-2"></i> Dự kiến số lượng tồn kho
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-calculator mr-2"></i> Tóm tắt cổ phiếu
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-chart-bar mr-2"></i> Hàng tồn kho cuối dẫn
+              </li>
+              <li className="mb-1">
+                <i className="fas fa-chart-line mr-2"></i> Giá cổ phiếu
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

@@ -24,7 +24,7 @@ function BoardBar() {
         display: 'flex',
         alignItems:'center',
         justifyContent: 'space-between',
-        paddingX: '64px',
+        paddingX: '56px',
         background: 'rgb(246,249,247)'
     }}>
         <Box sx={{
