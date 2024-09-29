@@ -1,4 +1,5 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import {Container} from '@mui/material'
 import AppBar from '~/components/AppBar'
 import BoardBar from '~/components/BoardBar'
@@ -29,11 +30,20 @@ import InventoryIcon from '@mui/icons-material/Inventory'
 import RequestPageIcon from '@mui/icons-material/RequestPage'
 import HomeIcon from '@mui/icons-material/Home'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import Grid2 from '@mui/material/Grid2'
+import Paper from '@mui/material/Paper'
+import Badge from '@mui/material/Badge'
+const shapeCircleStyles = { borderRadius: '50%' }
+const shapeStyles = { bgcolor: 'primary.main', width: 20, height: 20 }
 import { BarChart } from '@mui/x-charts/BarChart'
 import {Box} from '@mui/material'
 
 
 function Board() {
+  const circle = (
+    <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
+  );
   return (
     <Container disableGutters maxWidth={false} sx={{ height: '100vh',  }}>
         <Box>
@@ -45,8 +55,9 @@ function Board() {
         <Box sx={{
           display: 'flex',
           maxHeight:'100vh',
-          paddingX: '64px',
-          marginTop:'12px'
+          paddingX: '44px',
+          marginTop:'12px',
+          overflowY:'auto'
         }}>
           <Box sx={{
             maxWidth:'250px',
@@ -56,15 +67,21 @@ function Board() {
             display: 'flex',
             flexDirection: 'column',
             overflowX:'hidden',
-            overflowY:'auto'
+            overflowY:'auto',
+
           }}>
               
               <List
-      sx={{ width: '100%', maxWidth: 250 }}
+      sx={{ width: '100%', 
+            maxWidth: 250,
+            justifyContent:'flex-start',
+            display:'flex',
+            flexDirection:'column'
+          }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
+        <ListSubheader component="div" id="nested-list-subheader" sx={{ marginLeft: '6px'}}>
           BỘ PHẬN
         </ListSubheader>
       }
@@ -217,11 +234,28 @@ function Board() {
       </ListItemButton>
       </List>
           </Box>
+          
+          
+          {/* Main Content */}
+          
+          
+          {/* Chart */}
           <Box sx={{
-            maxWidth:'750px',
-            maxHeight:'100vh'
+            maxWidth:'1000px',
+            maxHeight:'420px',
+            boxShadow: '4',
+            paddingY:'15px',
+            marginLeft:'32px',
+            borderRadius:'15px',
+            marginTop:'10px'
           }}>
-              <BarChart
+          <Typography variant="h6" gutterBottom sx={{ marginTop: '24px', paddingX:'38px'}}>
+              Warehouse wise Stock Value
+          </Typography>
+          <Typography variant="caption" gutterBottom sx={{ display: 'block', marginTop: '2px', paddingX:'38px'}}>
+            Đã đồng bộ hóa lần cuối 3 phút trước
+          </Typography>
+              <BarChart 
                     xAxis={[
                       {
                         id: 'barCategories',
@@ -234,11 +268,1576 @@ function Board() {
                         data: [2, 0],
                       },
                     ]}
-                    width={1000}
-                    height={400}
+                    width={900}
+                    height={300}
+                    sx={{
+                      paddingX:'44px'
+                    }}
                   />
+              <Box>
+          
+          
+          {/* Phần Quick Access */}
+          <Typography variant="h6" gutterBottom sx={{ marginTop: '40px', fontWeight:'600'}}>
+              Quick Access
+          </Typography>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box
+                 sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer',
+                  
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Sản phẩm</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'green',
+                  boxShadow:'3',
+                }}>
+
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Yêu cầu nguyên liệu</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'yellow',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Chứng từ kho</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'white',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1,
+            paddingY:'12px'
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Biên lai nhận hàng</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'yellow',
+                  boxShadow:'3',
+                }}>
+
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Phiếu giao hàng</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'yellow',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Sổ cái hàng tồn kho</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'transparent',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1,
+            paddingY:'10px'
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Số tồn kho</Typography>
+                <Box sx={{
+                  minWidth:'100px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'transparent',
+                  boxShadow:'3',
+                }}>
+
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  cursor:'pointer'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Bảng thông tin tổng hợp</Typography>
+                <Box sx={{
+                  minWidth:'50px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'transparent',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  justifyContent:'space-between',
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingX:'12px',
+                  visibility:'hidden'
+                }}>
+                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}></Typography>
+                <Box sx={{
+                  minWidth:'50px',
+                  minHeight:'20px',
+                  borderRadius:'10px',
+                  bgcolor:'transparent',
+                  boxShadow:'3',
+                }}>
+                </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
+          </Box>
+
+
+          {/* Masters & Reports */}
+          <Box>
+          <Typography variant="h6" gutterBottom sx={{ marginTop: '40px', fontWeight:'600'}}>
+              Masters & Reports
+          </Typography>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1,
+            paddingY:'12px'
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Hàng hóa và giá cả</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Sản phẩm
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Nhóm hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color='warning' overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Sản phẩm lô
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Bảng giá
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Giá sản phẩm
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Quy tắc giao hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Quy tắc định giá
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mục thay thế
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mục Nhà sản xuất
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Số thuế hải quan
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Giao dịch hàng tồn kho</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Yêu cầu nguyên liệu
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Chứng từ kho
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Phiếu giao hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Biên lai nhận hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Danh sách lựa chọn
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Giao hàng tận nơi
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Báo cáo hàng tồn kho</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Sổ cái hàng tồn kho
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Số tồn kho
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Dự kiến số lượng tồn kho
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Tóm tắt cổ phiếu
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Hàng tồn kho cũ dần
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Giá cổ phiếu
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1,
+            paddingY: '12px'
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Cài đặt</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Thiết lập thông số hàng tồn kho
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Kho hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color='warning' overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Unit of Measure (UOM)
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Cài đặt Biến thể mục
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Nhãn
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Giá trị thuộc tính
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Hệ số chuyển đổi ĐVT
+                  </Typography>
+                  </Box>
+                  </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Số thứ tự và hàng loạt</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Số seri
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Lô hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Lưu ý cài đặt
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Không nối tiếp hợp đồng dịch vụ hết...
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Serial No tình trạng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Nối tiếp không có bảo hành hết hạn
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Công cụ</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Kiểm kê, chốt kho
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Bảng đóng gói
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Kiếm tra chất lượng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mẫu kiểm tra chất lượng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Cân bằng chứng khoán nhanh
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap:'1',
+            flexGrow: 1,
+            paddingY:'12px'
+          }}>
+            <Grid2 container spacing={3}>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Báo Cáo Chính</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mẫu hàng - danh sách tỷ giá thông...
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color="warning" overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Phân tích hàng tồn kho
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge color='warning' overlap="circular" badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Số lượng cổ phiếu so với Số lượng hà...
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Xu hướng phiếu giao hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                  Xu hướng của biên lai nhận hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Phân tích đơn hàng bán hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Phân tích đơn đặt hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Thiếu mục Báo cáo
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Lịch sử số dư theo từng đợt
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Báo Cáo Khác</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mục yêu cầu được chuyển giao
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Tình trạng hết lô hàng
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Giá mục
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mẫu hàng thông minh được gợi ý sẵn
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Chi tiết biến thể của Chi tiết
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Nguyên liệu thầu phụ được chuyển n...
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Mục hợp đồng được nhận
+                  </Typography>
+                  </Box><Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    So sánh giá trị cổ phiếu và tài khoản
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+              <Grid2 size={4}>
+                <Box sx={{
+                  minWidth:'300px',
+                  minHeight:'70px',
+                  display:'flex',
+                  gap: 1,
+                  boxShadow:'4',
+                  borderRadius:'10px',
+                  alignItems:'flex-start',
+                  paddingX:'20px',
+                  flexDirection: 'column',
+                  overflowX:'hidden'
+                }}>
+                <Box sx={{
+                  display:'flex',
+                  gap: 1,
+                  borderRadius:'10px',
+                  alignItems:'center',
+                  paddingY:'8px'
+                }}>
+                <DescriptionIcon />
+                <Typography variant='subtitle'>Incorrect Data Report</Typography>
+                </Box>
+                <Box sx={{
+                  display: 'flex',
+                  
+                }}>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Incorrect Serial No Qty and Valuation
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    Incorrect Balance Qty After transact...
+                  </Typography>
+                  </Box>
+                  <Box sx=
+                  {{display: 'flex', 
+                    gap:1, 
+                    cursor:'pointer',
+                    height:'fit-content',
+                    '&:hover':{
+                      border: '1px solid gray',
+                      backgroundColor:'lightgray',
+                      width:'260px'
+                    }}}>
+                  <Badge  badgeContent=" ">
+                    {circle}
+                  </Badge>
+                  <Typography variant='subtitle'>
+                    So sánh giá trị cổ phiếu và tài khoản
+                  </Typography>
+                  </Box>
+                </Box>
+              </Grid2>
+          </Grid2>
+          </Box>
           </Box>
         </Box>
+        
        
     </Container>
   )
