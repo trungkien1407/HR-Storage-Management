@@ -47,6 +47,7 @@ function AppBar() {
         alignItems:'center',
         justifyContent: 'space-between',
         paddingX: '64px',
+        paddingY: '12px',
         boxShadow: 1,
     }}
     >

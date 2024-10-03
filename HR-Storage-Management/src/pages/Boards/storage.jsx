@@ -1,5 +1,5 @@
-import React from 'react'
-import { styled } from '@mui/material/styles'
+// import React from 'react'
+// import { styled } from '@mui/material/styles'
 import {Container} from '@mui/material'
 import AppBar from '~/components/AppBar'
 import BoardBar from '~/components/BoardBar'
@@ -29,10 +29,11 @@ import HandymanIcon from '@mui/icons-material/Handyman'
 import InventoryIcon from '@mui/icons-material/Inventory'
 import RequestPageIcon from '@mui/icons-material/RequestPage'
 import HomeIcon from '@mui/icons-material/Home'
-import Stack from '@mui/material/Stack'
+// import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Grid2 from '@mui/material/Grid2'
-import Paper from '@mui/material/Paper'
+// import Paper from '@mui/material/Paper'
+import Link from '@mui/material/Link'
 import Badge from '@mui/material/Badge'
 const shapeCircleStyles = { borderRadius: '50%' }
 const shapeStyles = { bgcolor: 'primary.main', width: 20, height: 20 }
@@ -904,9 +905,11 @@ function Board() {
                   <Badge color="warning" overlap="circular" badgeContent=" ">
                     {circle}
                   </Badge>
+                  <Link href="inventoryLadger" target="_blank">
                   <Typography variant='subtitle'>
                     Sổ cái hàng tồn kho
                   </Typography>
+                  </Link>
                   </Box>
                 </Box>
                 <Box sx=
