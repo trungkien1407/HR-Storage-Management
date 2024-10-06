@@ -46,8 +46,9 @@ function CustomCard() {
                       backgroundColor: item.bgColor,
                       color: item.color,
                       fontWeight: 'bold',
+                      fontSize:'12px'
                     }}
-                    icon={<span style={{ color: item.color, fontSize: '8px' }}>●</span>}
+                    icon={<span style={{ color: item.color, fontSize: '6px' }}>●</span>}
                   />
                 )}
               </Card>

@@ -1,0 +1,19 @@
+.inventory-report {
+    /* Styles cho toàn bộ component */
+  }
+  
+  .inventory-report ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .inventory-report li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .inventory-report .icon {
+    margin-right: 10px;
+    color: gold; /* Màu vàng cho icon */
+  }
