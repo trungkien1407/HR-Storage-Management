@@ -40,7 +40,7 @@ function InventoryReport() {
       title: 'Báo cáo Hàng tồn kho',
       titleIcon: <TextSnippetIcon/>,
       items: [
-        {text:'Sổ cái hàng tồn kho',url:''},
+        {text:'Sổ cái hàng tồn kho',url:'inventoryLadger'},
         {text:'Số tồn kho',url:''},
         {text:'Dự kiến số lượng tồn kho',url:''},
         {text:'Tóm tắt cổ phiếu',url:''},
