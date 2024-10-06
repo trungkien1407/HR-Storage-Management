@@ -39,9 +39,19 @@ const shapeCircleStyles = { borderRadius: '50%' }
 const shapeStyles = { bgcolor: 'primary.main', width: 20, height: 20 }
 import { BarChart } from '@mui/x-charts/BarChart'
 import {Box} from '@mui/material'
+import CustomCard from '../../components/CustomCard/index.jsx'
+import { Card, Chip } from '@mui/material';
+
+
+
 
 
 function Board() {
+  const cardData = [
+    { title: 'Sản phẩm', value: '96 Available', status: '' },
+    { title: 'Yêu cầu nguyên liệu', value: '4 Pending', status: '' },
+    // ... các thẻ còn lại
+  ];
   const circle = (
     <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
   );
@@ -275,252 +285,15 @@ function Board() {
                       paddingX:'44px'
                     }}
                   />
-              <Box>
+              
           
           
           {/* Phần Quick Access */}
           <Typography variant="h6" gutterBottom sx={{ marginTop: '40px', fontWeight:'600'}}>
               Quick Access
           </Typography>
-          <Box sx={{
-            display: 'flex',
-            gap:'1',
-            flexGrow: 1
-          }}>
-            <Grid2 container spacing={3}>
-              <Grid2 size={4}>
-                <Box
-                 sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer',
-                  
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Sản phẩm</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'green',
-                  boxShadow:'3',
-                }}>
-
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Yêu cầu nguyên liệu</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'yellow',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Chứng từ kho</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'white',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-          </Grid2>
-          </Box>
-          <Box sx={{
-            display: 'flex',
-            gap:'1',
-            flexGrow: 1,
-            paddingY:'12px'
-          }}>
-            <Grid2 container spacing={3}>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Biên lai nhận hàng</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'yellow',
-                  boxShadow:'3',
-                }}>
-
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Phiếu giao hàng</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'yellow',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Sổ cái hàng tồn kho</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'transparent',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-          </Grid2>
-          </Box>
-          <Box sx={{
-            display: 'flex',
-            gap:'1',
-            flexGrow: 1,
-            paddingY:'10px'
-          }}>
-            <Grid2 container spacing={3}>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Số tồn kho</Typography>
-                <Box sx={{
-                  minWidth:'100px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'transparent',
-                  boxShadow:'3',
-                }}>
-
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  cursor:'pointer'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}>Bảng thông tin tổng hợp</Typography>
-                <Box sx={{
-                  minWidth:'50px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'transparent',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-              <Grid2 size={4}>
-                <Box sx={{
-                  minWidth:'300px',
-                  minHeight:'70px',
-                  display:'flex',
-                  justifyContent:'space-between',
-                  boxShadow:'4',
-                  borderRadius:'10px',
-                  alignItems:'center',
-                  paddingX:'12px',
-                  visibility:'hidden'
-                }}>
-                  <Typography sx={{ fontSize:'18px', fontWeight:'400'}}></Typography>
-                <Box sx={{
-                  minWidth:'50px',
-                  minHeight:'20px',
-                  borderRadius:'10px',
-                  bgcolor:'transparent',
-                  boxShadow:'3',
-                }}>
-                </Box>
-                </Box>
-              </Grid2>
-          </Grid2>
-          </Box>
-          </Box>
+         <CustomCard></CustomCard>
+   
 
 
           {/* Masters & Reports */}
