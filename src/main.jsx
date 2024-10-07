@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import InventoryLadger from './pages/Boards/inventoryLadger.jsx'
+import Item from './pages/Boards/items.jsx'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { ThemeProvider } from '@emotion/react'
@@ -11,6 +12,7 @@ import {
   Route
 } from "react-router-dom"
 
+
 const router = createBrowserRouter([
   {
   path:"/",
@@ -20,7 +22,12 @@ const router = createBrowserRouter([
     path:"/InventoryLadger",
     element: <InventoryLadger />,
     },
+    {
+      path:"/items",
+      element: <Item />,
+      },
 ])
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

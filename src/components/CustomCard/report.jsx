@@ -10,7 +10,7 @@ function InventoryReport() {
       title: 'Hàng hóa và giá cả',
       titleIcon: <TextSnippetIcon/>,
       items: [
-        { text: 'Sản phẩm', url: '/products' },
+        { text: 'Sản phẩm', url: '/items' },
         { text: 'Nhóm hàng', url: '/categories' },
         { text: 'Sản phẩm lô', url: '/batch-products' },
         { text: 'Bảng giá', url: '/price-list' },
@@ -109,7 +109,7 @@ function InventoryReport() {
         { text: 'Thiết mục báo cáo', url: '/invoices' },
         { text: 'Lịch sử số dư theo từng đợt', url: '/invoices' },
       ],
-      iconBackgrounds: ['#FFF3E0'],
+      iconBackgrounds: ['#FFF3E0','#FFF3E0','#FFF3E0','#FFF3E0','#FFF3E0'],
     },
     {
       title: 'Báo Cáo Khác',
@@ -125,6 +125,8 @@ function InventoryReport() {
         { text: 'So sánh giá trị cổ phiếu và tài khoản', url: '/invoices' },
         
       ],
+      color:[,,,,,,,'#f4f5f6'],
+      
       iconBackgrounds: ['#FFF3E0'],
     },
     {
@@ -173,6 +175,7 @@ function InventoryReport() {
                     cursor: 'pointer', // Thay đổi con trỏ chuột
                     
                     
+                    
                   }}
                   // Thêm sự kiện hover
                   onMouseEnter={(e) => {
@@ -186,7 +189,7 @@ function InventoryReport() {
                     to={item.url}
                     style={{
                       textDecoration: 'none',
-                      color: 'inherit',
+                      color:column.color?.[itemIndex]||'black' ,
                       display: 'flex',
                       width: '100%',
                     }}

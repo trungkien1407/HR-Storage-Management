@@ -48,14 +48,7 @@ import InventoryReport from '../../components/CustomCard/report.jsx'
 
 
 function Board() {
-  const cardData = [
-    { title: 'Sản phẩm', value: '96 Available', status: '' },
-    { title: 'Yêu cầu nguyên liệu', value: '4 Pending', status: '' },
-    // ... các thẻ còn lại
-  ];
-  const circle = (
-    <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
-  );
+
   return (
     <Container disableGutters maxWidth={false} sx={{ height: '100vh',  }}>
         <Box>
@@ -253,13 +246,14 @@ function Board() {
           
           {/* Chart */}
           <Box sx={{
-            maxWidth:'1000px',
-            maxHeight:'420px',
+            maxWidth:'900px',
+            maxHeight:'100%',
             boxShadow: '4',
             paddingY:'15px',
             marginLeft:'32px',
             borderRadius:'15px',
-            marginTop:'10px'
+            marginTop:'10px',
+            fontSize:'10px'
           }}>
           <Typography variant="h6" gutterBottom sx={{ marginTop: '24px', paddingX:'38px'}}>
               Warehouse wise Stock Value
@@ -290,7 +284,7 @@ function Board() {
           
           
           {/* Phần Quick Access */}
-          <Typography variant="h6" gutterBottom sx={{ marginTop: '40px', fontWeight:'600'}}>
+          <Typography variant="h6" gutterBottom sx={{ marginTop: '40px', fontWeight:'800'}}>
               Quick Access
           </Typography>
          <CustomCard></CustomCard>

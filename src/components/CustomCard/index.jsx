@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, Typography, Chip, Grid, Box, Link } from '@mui/material';
 
@@ -23,30 +22,33 @@ function CustomCard() {
               <Card
                 sx={{
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  justifyContent: 'space-between', // Đặt tiêu đề và trạng thái cách nhau
+                  alignItems: 'center', // Căn giữa theo trục dọc
                   padding: '8px 16px',
                   borderRadius: '12px',
                   boxShadow: 'none',
                   border: '1px solid #E0E0E0',
-                  '&:hover':{
+                  fontSize: '10px',
+                  height: '100%',
+                  '&:hover': {
                     boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                    transform: 'scale(1.02)', 
-
-                  }
+                    transform: 'scale(1.02)',
+                  },
                 }}
               >
-                <Typography variant="h6" component="div">
-                  {item.title}
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+                  <Typography variant="h6" component="div" sx={{ fontSize: '14px', fontWeight: 'bold'}}>
+                    {item.title}
+                  </Typography>
+                </Box>
                 {item.status && (
                   <Chip
                     label={item.status}
                     sx={{
                       backgroundColor: item.bgColor,
                       color: item.color,
-                      fontWeight: 'bold',
-                      fontSize:'12px'
+                      fontSize: '10px',
+                      marginLeft: '8px', // Thêm khoảng cách giữa title và status
                     }}
                     icon={<span style={{ color: item.color, fontSize: '6px' }}>●</span>}
                   />
